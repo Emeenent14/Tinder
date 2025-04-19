@@ -1,0 +1,346 @@
+/* App.css */
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #5ecc62;
+  --accent-color: #ffd166;
+  --bg-color: #f9f7f3;
+  --text-color: #333;
+  --card-bg: #fff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.header h1 {
+  color: var(--primary-color);
+  font-size: 28px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.egg-decoration {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  width: 30px;
+  height: 40px;
+  background: var(--accent-color);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(20deg);
+}
+
+.egg-decoration::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  top: 10px;
+  left: 10px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-container {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-option.selected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.radio-option input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio-option span {
+  margin-left: 5px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-button, .match-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.next-button:disabled, .match-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.back-button {
+  background-color: #f0f0f0;
+  color: var(--text-color);
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.option-checkbox {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-checkbox.selected {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.option-checkbox input {
+  margin-right: 10px;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.selection-counter {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.result-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.match-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.match-card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.heart-icon {
+  margin-bottom: 15px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.match-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.match-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-avatar {
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.match-heart {
+  animation: beatHeart 1s infinite alternate;
+}
+
+@keyframes beatHeart {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+.match-message {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f9f0ff;
+  border-radius: 10px;
+}
+
+.match-decoration {
+  margin: 20px 0;
+  color: var(--secondary-color);
+}
+
+.restart-button {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  width: 100%;
+  margin-top: 20px;
+}
+
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Mobile first approach - these styles apply to all screens */
+/* Adjustments for larger screens */
+@media (min-width: 768px) {
+  .header h1 {
+    font-size: 32px;
+  }
+  
+  .step-container {
+    padding: 30px;
+  }
+  
+  .match-card {
+    padding: 40px;
+  }
+}
